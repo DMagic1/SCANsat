@@ -86,6 +86,8 @@ namespace SCANsat.SCAN_Data
 				else
 					clampHeight = defaultClampHeight;
 			}
+
+			initCoverage();
 		}
 
 		#region Public accessors
@@ -337,6 +339,14 @@ namespace SCANsat.SCAN_Data
 				uncov += coverage_count[19];
 			return uncov;
 		}
+
+		private void initCoverage()
+		{
+			for (int i = 0; i < 32; ++i)
+			{
+				coverage_count[i] = 360 * 180;
+			}
+		}
 		
 		#endregion
 
@@ -443,6 +453,7 @@ namespace SCANsat.SCAN_Data
 		{
 			coverage = new Int32[360, 180];
 			heightmap = new float[360, 180];
+			initCoverage();
 			resetImages();
 		}
 		internal void resetImages()
